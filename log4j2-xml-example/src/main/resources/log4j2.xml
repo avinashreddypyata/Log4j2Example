@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+
+    <!-- Console Appender -->
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout
+        pattern="%d{yyyy-MMM-dd HH:mm:ss a} [%t] %-5level %logger{36} - %msg%n" />
+    </Console>
+
+ <RollingFile
+  name="roll-by-size"
+  fileName="/Users/avinashreddy/Downloads/Log4j2Example/logs/app.log"
+  filePattern="/Users/avinashreddy/Downloads/Log4j2Example/logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
+  ignoreExceptions="false">
+    <PatternLayout>
+        <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+    </PatternLayout>
+    <Policies>
+        <OnStartupTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="1 KB" />
+    </Policies>
+    <DefaultRolloverStrategy max="4"/>
+</RollingFile>
+
+  </Appenders>
+  <Loggers>
+    <Root level="trace">
+      <AppenderRef ref="Console" />
+      <AppenderRef ref="roll-by-size" />
+    </Root>
+  </Loggers>
+</Configuration>
