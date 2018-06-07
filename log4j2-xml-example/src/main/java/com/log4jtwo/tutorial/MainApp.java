@@ -1,4 +1,4 @@
-package com.boraji.tutorial.log4j2;
+package com.log4jtwo.tutorial;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
